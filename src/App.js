@@ -1,78 +1,89 @@
 import React, { useState } from "react";
 import "./styles.css";
 
-const musicDB = {
-  pop: [
+const travellingDB = {
+  udaipur: [
     {
-      Name: "One Direction",
-      Song: "Night Changes"
+      Name: " fatesagar",
+      Place: " Lake "
     },
     {
-      Name: "One Direction",
-      Song: "Steal My Girl"
+      Name: "The pataio",
+      Place: "Cafe"
+    },
+    {
+      Name: "Turnel",
+      Place: " Turnel"
     }
   ],
-  country: [
+  mumbai: [
     {
-      Name: "Keith Urban",
-      Song: "Somewhere in my car"
+      Name: " BandStand ",
+      Place: " Hangout Space "
     },
     {
-      Name: "Keith Urban",
-      Song: "Cop Car"
+      Name: " Gate Way of India ",
+      Place: " Monument "
+    },
+    {
+      Name: " Marine Drive",
+      Place: "Sidewalks"
     }
   ],
 
-  indie: [
+  delhi: [
     {
-      Name: "Local Train",
-      Song: "Choo Loo"
+      Name: " JamaMasjid ",
+      Place: " FoodParadise "
     },
     {
-      Name: "Local Train",
-      Song: "Dil Mere"
+      Name: " INDIA GATE",
+      Place: "Monument"
+    },
+    {
+      Name: "National Park",
+      Place: " Lake"
     }
   ]
 };
 
-const genreArray = Object.keys(musicDB);
+const placeArray = Object.keys(travellingDB);
 
 export default function App() {
-  const [selectedGenre, setGenreTab] = useState("pop");
-
+  const [sPlace, sTab] = useState("mumbai");
   function onClickHandler(event) {
-    let genre = event.target.textContent;
-    setGenreTab(genre);
+    let fresh = event.target.textContent;
+    sTab(fresh);
   }
   return (
     <div className="App">
       <h1>
-        <span aria-label="song-emoji" role="img">
-          🎼
+        <span aria-label="palce-emoji" role="img">
+          🧭
         </span>{" "}
-        good songs
+        TravelingPass
       </h1>
-      <p>Checkout the songs by selecting the genre </p>
+      <p>Best Place to visit! </p>
       <hr />
 
-      <div className="genreButtons">
-        {genreArray.map((genre) => {
+      <div className="plcaeButtons">
+        {placeArray.map((fresh) => {
           return (
-            <button key={genre} onClick={onClickHandler}>
-              {genre}
+            <button key={fresh} onClick={onClickHandler}>
+              {fresh}
             </button>
           );
         })}
       </div>
-      <div className="genreSongs">
+      <div className="freshPlace">
         <ul>
-          {musicDB[selectedGenre].map((artist) => {
+          {travellingDB[sPlace].map((stays) => {
             return (
-              <li key={artist}>
-                <div>{artist.Song}</div>
+              <li key={stays}>
+                <div>{stays.Place}</div>
                 <div>
                   <small>
-                    <em>{artist.Name}</em>
+                    <em>{stays.Name}</em>
                   </small>
                 </div>
               </li>
